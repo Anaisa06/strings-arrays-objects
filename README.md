@@ -115,6 +115,8 @@ Solicita al usuario que ingrese las calificaciones del estudiante separadas por 
 Convierte las calificaciones ingresadas a un array utilizando split().
 Utiliza reduce() para sumar todas las calificaciones y calcular el promedio.
 Muestra el promedio de calificaciones al usuario.
+
+
 Reto 2: Calculadora de Estadísticas de Calificaciones
 
 Crear un script que calcule estadísticas de calificaciones de un grupo de estudiantes. El script debe cumplir con las siguientes condiciones:
@@ -129,6 +131,8 @@ Número de Aprobados (calificación mayor o igual a 70)
 Número de Reprobados (calificación menor a 70)
 Lista de Calificaciones Ordenadas de Mayor a Menor
 Muestra las estadísticas de calificaciones al usuario.
+
+
 Reto 3: Sistema de Gestión de Inventario
 
 Desarrollar un sistema en JavaScript para gestionar un inventario de productos. Cada producto estará representado como un objeto con varias propiedades, y todos los productos se almacenarán en una colección (objeto o array).
