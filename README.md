@@ -32,6 +32,7 @@ Verifica si el nombre de usuario generado ya existe en el objeto 'users'. Utiliz
 Si el nombre de usuario ya existe, agrega un número al final del nombre de usuario y actualiza el correo electrónico correspondiente. Por ejemplo, si 'johndoe' ya existe, el nuevo nombre de usuario será 'johndoe1' y el correo electrónico será 'johndoe1@myDomain.com'.
 Nota: Puedes utilizar bucles for, while y estructuras condicionales como if/else para resolver este reto, pero te recomiendo que utilices métodos de strings y arrays para simplificar la solución.
 
+
 Reto 2: Validador de Contraseñas seguras
 
 Crear un script que valide contraseñas seguras. El script debe cumplir con las siguientes condiciones:
@@ -43,6 +44,8 @@ Verifica si la contraseña contiene al menos una letra.
 Verifica si la contraseña contiene al menos un caracter especial. Los caracteres especiales permitidos son los siguientes: ! @ # $ % ^ & * ( ) + = _ - { } [ ] : ; " ' ? < > , . | / \ ~ `
 Si la contraseña cumple con todas las condiciones, muestra un mensaje de "Contraseña segura".
 Si la contraseña no cumple con alguna de las condiciones, muestra un mensaje de "Contraseña insegura" y una lista de las condiciones que no cumple.
+
+
 Reto 3: Validador de Correos Electrónicos
 
 Crear un script que valide correos electrónicos. El script debe cumplir con las siguientes condiciones:
@@ -54,6 +57,8 @@ Debe contener al menos un punto '.' después del símbolo '@'.
 El punto '.' y el símbolo '@' no pueden estar juntos.
 El correo electrónico no puede contener espacios en blanco.
 Si el correo electrónico cumple con todas las condiciones, muestra un mensaje de "Correo electrónico válido".
+
+
 Reto 4: Sistema de gestion de eventos
 
 Desarrollar un sistema en JavaScript para crear, actualizar, buscar y eliminar eventos. Cada evento estará representado como un objeto con varias propiedades, y todos los eventos se almacenarán en una colección (objeto o array).
