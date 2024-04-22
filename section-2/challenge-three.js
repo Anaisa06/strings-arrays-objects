@@ -16,7 +16,7 @@ let loop = true
 
 while(loop){
     //Interactive menu
-    let userResponse = prompt("Bienvenido al gestor de inventario\nEscoge la opción que deseas realizar\n1. Añadir un nuevo producto\n2. Duplicar un producto\n3. Ver lista de productos y buscar producto\n4. Actualizar un producto\n30. Salir")
+    let userResponse = prompt("Bienvenido al gestor de inventario\nEscoge la opción que deseas realizar\n1. Añadir un nuevo producto\n2. Duplicar un producto\n3. Ver lista de productos y buscar producto\n4. Actualizar un producto\n5. Eliminar un producto\n30. Salir")
 
 //Swich to check the user response
 
@@ -179,60 +179,88 @@ while(loop){
 
         case "4": //Update product
 
-        let updateProduct = confirm("¿Quieres actualizar un producto?")
-        
+            let updateProduct = confirm("¿Quieres actualizar un producto?")            
 
-        while (updateProduct){ 
-            let updateList = "Esta es una lista de los productos:\n"           
-            productList.forEach(product => {
-                updateList += `Id: ${product.id} - Nombre: ${product.productName} - Precio ${product.price}\n`
-            })
-            let toUpdateId = checkNum(prompt(updateList + "Selecciona el id del producto a actualizar"))
+            while (updateProduct){ 
+                let updateList = "Esta es una lista de los productos:\n"           
+                productList.forEach(product => {
+                    updateList += `Id: ${product.id} - Nombre: ${product.productName} - Precio ${product.price}\n`
+                })
+                let toUpdateId = checkNum(prompt(updateList + "Selecciona el id del producto a actualizar"))
 
-            //Check if the id exists
-            let existingProduct = productList.find(product => product.id === toUpdateId)
+                //Check if the id exists
+                let existingProduct = productList.find(product => product.id === toUpdateId)
 
-            //If yes, ask the attribute to update
-            if (existingProduct){
-                let attributeUpdadte = prompt("¿Qué atributo te gustaría actualizar?\n1. Nombre\n2. Precio\n3. Cantidad\n4. Descripción")
+                //If yes, ask the attribute to update
+                if (existingProduct){
+                    let attributeUpdadte = prompt("¿Qué atributo te gustaría actualizar?\n1. Nombre\n2. Precio\n3. Cantidad\n4. Descripción")
 
-                //Switch to update the selected attribute
-                switch (attributeUpdadte){
+                    //Switch to update the selected attribute
+                    switch (attributeUpdadte){
 
-                    case "1"://Update name
-                        let newName = prompt("Ingresa el nuevo nombre del producto")
-                        existingProduct.productName = newName
-                        break
-                    
-                    case "2"://Update price
-                        let newPrice = checkNum(prompt("Ingresa el nuevo precio"))
-                        existingProduct.price = newPrice
-                        break
-                    
-                    case "3"://Update quantity
-                        let newQuantity = checkNum(prompt("Ingresa la nueva cantidad"))
-                        existingProduct.quantity = newQuantity
-                        break
+                        case "1"://Update name
+                            let newName = prompt("Ingresa el nuevo nombre del producto")
+                            existingProduct.productName = newName
+                            break
+                        
+                        case "2"://Update price
+                            let newPrice = checkNum(prompt("Ingresa el nuevo precio"))
+                            existingProduct.price = newPrice
+                            break
+                        
+                        case "3"://Update quantity
+                            let newQuantity = checkNum(prompt("Ingresa la nueva cantidad"))
+                            existingProduct.quantity = newQuantity
+                            break
 
-                    case "4"://Update description
-                        let newDescription = prompt("Ingresa la nueva descripción")
-                        existingProduct.description = newDescription
-                        break
+                        case "4"://Update description
+                            let newDescription = prompt("Ingresa la nueva descripción")
+                            existingProduct.description = newDescription
+                            break
 
-                    default:
-                        alert("No es una opción válida")
+                        default:
+                            alert("No es una opción válida")
+                    }
+
+                    console.log(existingProduct)
+
+                //If the id is not found    
+                }else {
+                    alert("Este id no existe")
                 }
 
-                console.log(existingProduct)
-
-            //If the id is not found    
-            }else {
-                alert("Este id no existe")
+                //Ask if the user wants to update another product
+                updateProduct = confirm("¿Quieres actualizar otro producto?")
             }
 
-            //Ask if the user wants to update another product
-            updateProduct = confirm("¿Quieres actualizar otro producto?")
-        }
+        case "5"://Erase a product
+            let eraseProduct = confirm("¿Quieres eliminar un producto?")
+            while (eraseProduct){
+
+                //Show the list
+                let updateList = "Esta es una lista de los productos:\n"           
+                productList.forEach(product => {
+                    updateList += `Id: ${product.id} - Nombre: ${product.productName} - Precio ${product.price}\n`
+                })
+                let toEraseId = checkNum(prompt(updateList + "Selecciona el id del producto a eliminar"))
+
+                //Check if the id exists
+                let existingProduct = productList.find(product => product.id === toEraseId)
+
+                //If the product exists, erase the product
+                if (existingProduct){
+                    let eraseIndex = productList.indexOf(existingProduct)
+                    productList.splice(eraseIndex, 1)
+                    alert("Producto eliminado existosamente")
+                
+                //If the product doesn't exists, give an alert    
+                } else {
+                    alert("Ese producto no existe")
+                } 
+                eraseProduct = confirm("¿Quieres eliminar otro producto?")        
+            } 
+            console.log(productList.length)
+
 
         case "30":
             alert("¡Hasta pronto!")
