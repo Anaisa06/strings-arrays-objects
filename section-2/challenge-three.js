@@ -32,10 +32,14 @@ function badWordsSearch(badWordsList, listToSearch){
 }
 
 function findTotalValue(list){
+    if (list.length === 0) {
+      return 0;
+    }
+
     let totalValue = list.reduce(
-      (accum, product) => (accum + product.price) * product.quantity
+      (accum, product) => accum + (product.price * product.quantity), 0
     );
-    return totalValue
+    return `$${totalValue}`
 }
 
 //Define an empty list to save the products objects
@@ -54,7 +58,7 @@ let loop = true;
 while (loop) {
   //Interactive menu
   let userResponse = prompt(
-    'Bienvenido al gestor de inventario\nEscoge la opción que deseas realizar\n1. Añadir un nuevo producto\n2. Duplicar un producto\n3. Ver lista de productos y buscar producto\n4. Actualizar un producto\n5. Eliminar un producto\n6. Verificar existencia de un producto\n7. Venta de productos\n8. Compra de productos\n9. Calcular valor total de inventario\n10. Ordernar inventario\n11. Buscar productos con malas palabras\n30. Salir'
+    'Bienvenido al gestor de inventario\nEscoge la opción que deseas realizar\n1. Añadir un nuevo producto\n2. Duplicar un producto\n3. Ver lista de productos y buscar producto\n4. Actualizar un producto\n5. Eliminar un producto\n6. Verificar existencia de un producto\n7. Venta de productos\n8. Compra de productos\n9. Calcular valor total de inventario\n10. Ordernar inventario\n11. Buscar productos con malas palabras\n12. Reporte general\n13. Salir'
   );
 
   //Swich to check the user response
@@ -405,8 +409,9 @@ while (loop) {
 
     //Total value
     case '9':
-      let totalValue = findTotalValue(productList)
+      let totalValue = findTotalValue(productList);
       alert(`El precio total de inventario es de ${totalValue}`);
+      break;
 
     //Organize list
     case '10':
@@ -454,19 +459,21 @@ while (loop) {
       alert(`Productos con posibles malas palabras ${showList(blacklistedProducts)}`);
       break;
 
-    //General report
-    // case "12":
-    //   let productsQuantity = productList.length
-    //   let badWordsProducts = blacklistedProducts.length
+    // General report
+    case "12":
+      let productsQuantity = productList.length     
+      let badWordsProducts = (badWordsSearch(badWordsList, productList)).length
 
-    //   console.log(`Reporte general\nCantidad de productos: ${productsQuantity}\nValor total de inventario: ${totalValue}\nCantidad de productos con malas palabras: ${badWordsProducts}`)
-    //   alert(`Reporte general\nCantidad de productos: ${productsQuantity}\nValor total de inventario: ${totalValue}\nCantidad de productos con malas palabras: ${badWordsProducts}`)
-    //   break  
-    case '30':
+      console.log(`Reporte general\nCantidad de productos: ${productsQuantity}\nValor total de inventario: ${findTotalValue(productList)}\nCantidad de productos con malas palabras: ${badWordsProducts}`)
+      alert(`Reporte general\nCantidad de productos: ${productsQuantity}\nValor total de inventario: ${findTotalValue(productList)}\nCantidad de productos con malas palabras: ${badWordsProducts}`)
+      break 
+    //Exit   
+    case '13':
       alert('¡Hasta pronto!');
       loop = false;
+    //Default
+    default:
+      alert("No es una opción válida, intenta de nuevo")  
   }
 }
 
-// - Métodos de arrays: push(), pop(), shift(), unshift(), splice(), slice(), map(), filter(), reduce(), sort(), entre otros.
-//     - Métodos de objetos: Object.keys(), Object.values(), Object.entries(), Object.assign()
